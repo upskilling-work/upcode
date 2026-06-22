@@ -1,0 +1,222 @@
+{
+  "models": [
+    {
+      "name": "gpt-5.5",
+      "provider": "OpenAI",
+      "label": "OpenAI GPT-5.5",
+      "model": "gpt-5.5",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "context_window": 400000,
+      "max_output": 128000
+    },
+    {
+      "name": "gpt-5.4",
+      "provider": "OpenAI",
+      "label": "OpenAI GPT-5.4",
+      "model": "gpt-5.4",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "context_window": 400000,
+      "max_output": 128000
+    },
+    {
+      "name": "gpt-5.4-mini",
+      "provider": "OpenAI",
+      "label": "OpenAI GPT-5.4 mini",
+      "model": "gpt-5.4-mini",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "context_window": 400000,
+      "max_output": 128000
+    },
+
+    {
+      "name": "claude-opus",
+      "provider": "Anthropic",
+      "label": "Anthropic Claude Opus 4.8 (native)",
+      "model": "claude-opus-4-8",
+      "base_url": "https://api.anthropic.com",
+      "api": "anthropic",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "context_window": 1000000,
+      "max_output": 128000,
+      "input_cost": 15.0,
+      "output_cost": 75.0
+    },
+    {
+      "name": "claude-sonnet",
+      "provider": "Anthropic",
+      "label": "Anthropic Claude Sonnet 4.6 (native)",
+      "model": "claude-sonnet-4-6",
+      "base_url": "https://api.anthropic.com",
+      "api": "anthropic",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "context_window": 1000000,
+      "max_output": 64000,
+      "input_cost": 3.0,
+      "output_cost": 15.0
+    },
+    {
+      "name": "claude-sonnet-thinking",
+      "provider": "Anthropic",
+      "label": "Claude Sonnet 4.6 (Thinking, native)",
+      "model": "claude-sonnet-4-6",
+      "base_url": "https://api.anthropic.com",
+      "api": "anthropic",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "reasoning_effort": "high",
+      "context_window": 1000000,
+      "max_output": 64000,
+      "input_cost": 3.0,
+      "output_cost": 15.0
+    },
+    {
+      "name": "claude-haiku",
+      "provider": "Anthropic",
+      "label": "Anthropic Claude Haiku 4.5 (native)",
+      "model": "claude-haiku-4-5",
+      "base_url": "https://api.anthropic.com",
+      "api": "anthropic",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "context_window": 200000,
+      "max_output": 64000,
+      "input_cost": 1.0,
+      "output_cost": 5.0
+    },
+
+    {
+      "name": "gemini-3.5-flash-medium",
+      "provider": "Google",
+      "label": "Gemini 3.5 Flash (Medium, native)",
+      "model": "gemini-3.5-flash",
+      "base_url": "https://generativelanguage.googleapis.com",
+      "api": "gemini",
+      "api_key_env": "GEMINI_API_KEY",
+      "reasoning_effort": "medium",
+      "context_window": 1048576,
+      "max_output": 65536
+    },
+    {
+      "name": "gemini-3.5-flash-high",
+      "provider": "Google",
+      "label": "Gemini 3.5 Flash (High, native)",
+      "model": "gemini-3.5-flash",
+      "base_url": "https://generativelanguage.googleapis.com",
+      "api": "gemini",
+      "api_key_env": "GEMINI_API_KEY",
+      "reasoning_effort": "high",
+      "context_window": 1048576,
+      "max_output": 65536
+    },
+    {
+      "name": "gemini-3.5-flash-low",
+      "provider": "Google",
+      "label": "Gemini 3.5 Flash (Low, native)",
+      "model": "gemini-3.5-flash",
+      "base_url": "https://generativelanguage.googleapis.com",
+      "api": "gemini",
+      "api_key_env": "GEMINI_API_KEY",
+      "reasoning_effort": "low",
+      "context_window": 1048576,
+      "max_output": 65536
+    },
+    {
+      "name": "gemini-3.1-pro-low",
+      "provider": "Google",
+      "label": "Gemini 3.1 Pro (Low, native)",
+      "model": "gemini-3.1-pro",
+      "base_url": "https://generativelanguage.googleapis.com",
+      "api": "gemini",
+      "api_key_env": "GEMINI_API_KEY",
+      "reasoning_effort": "low",
+      "context_window": 1048576,
+      "max_output": 65536
+    },
+    {
+      "name": "gemini-3.1-pro-high",
+      "provider": "Google",
+      "label": "Gemini 3.1 Pro (High, native)",
+      "model": "gemini-3.1-pro",
+      "base_url": "https://generativelanguage.googleapis.com",
+      "api": "gemini",
+      "api_key_env": "GEMINI_API_KEY",
+      "reasoning_effort": "high",
+      "context_window": 1048576,
+      "max_output": 65536
+    },
+    {
+      "name": "deepseek-v4-flash",
+      "provider": "DeepSeek",
+      "label": "DeepSeek V4 Flash",
+      "model": "deepseek-v4-flash",
+      "base_url": "https://api.deepseek.com",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "context_window": 1000000,
+      "max_output": 384000
+    },
+    {
+      "name": "deepseek-v4-pro",
+      "provider": "DeepSeek",
+      "label": "DeepSeek V4 Pro",
+      "model": "deepseek-v4-pro",
+      "base_url": "https://api.deepseek.com",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "context_window": 1000000,
+      "max_output": 384000
+    },
+
+    {
+      "name": "gemma-local",
+      "provider": "Local",
+      "label": "Gemma (LM Studio local)",
+      "model": "google/gemma-4-e2b",
+      "base_url": "http://localhost:1234/v1",
+      "api_key": "lm-studio",
+      "context_window": 16384,
+      "max_output": 2048
+    },
+    {
+      "name": "qwen-coder",
+      "provider": "Local",
+      "label": "Qwen2.5 Coder (LM Studio local)",
+      "model": "qwen2.5-coder-7b-instruct",
+      "base_url": "http://localhost:1234/v1",
+      "api_key": "lm-studio",
+      "context_window": 32768,
+      "max_output": 4096,
+      "temperature": 0.1
+    },
+    {
+      "name": "gemma-e4b-local",
+      "provider": "Local",
+      "label": "Gemma 4 E4B (LM Studio local)",
+      "model": "google/gemma-4-e4b",
+      "base_url": "http://localhost:1234/v1",
+      "api_key": "lm-studio",
+      "context_window": 16384,
+      "max_output": 2048
+    },
+    {
+      "name": "deepseek-coder-local",
+      "provider": "Local",
+      "label": "DeepSeek Coder 6.7B (LM Studio local)",
+      "model": "deepseek-coder-6.7b-instruct",
+      "base_url": "http://localhost:1234/v1",
+      "api_key": "lm-studio",
+      "context_window": 16384,
+      "max_output": 4096,
+      "temperature": 0.1
+    },
+    {
+      "name": "phi-4-mini-local",
+      "provider": "Local",
+      "label": "Phi-4 mini 3.8B (LM Studio local)",
+      "model": "phi-4-mini-3.8b-instruct",
+      "base_url": "http://localhost:1234/v1",
+      "api_key": "lm-studio",
+      "context_window": 16384,
+      "max_output": 4096
+    }
+  ]
+}

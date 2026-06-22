@@ -1,0 +1,7 @@
+openai>=1.30.0
+httpx>=0.27          # native Anthropic provider (already pulled in by openai)
+python-dotenv>=1.0.0
+pyyaml>=6.0
+rich>=13.7.0
+textual>=0.60
+playwright>=1.30.0

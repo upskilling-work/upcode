@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+workspace/
+conf/state.json
+# Per-workspace runtime files are ignored, but project skills under
+# .upcode/skills/ are versionable assets (like .agents/).
+.upcode/*
+!.upcode/skills/
+.vscode

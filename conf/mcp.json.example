@@ -1,0 +1,21 @@
+{
+  "//": "MCP servers. Copy to conf/mcp.json (global) or <workspace>/.upcode/mcp.json (project; wins on a name clash). Each server is started on launch; its tools appear as mcp_<server>_<tool>. Set \"enabled\": false to skip one. Transport: stdio (a local command speaking JSON-RPC over stdin/stdout).",
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allow"],
+      "enabled": false
+    },
+    "git": {
+      "command": "uvx",
+      "args": ["mcp-server-git", "--repository", "/path/to/repo"],
+      "enabled": false
+    },
+    "example-with-env": {
+      "command": "my-mcp-server",
+      "args": ["--flag"],
+      "env": { "API_TOKEN": "..." },
+      "enabled": false
+    }
+  }
+}

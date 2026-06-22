@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# upcode — starts the Upcode TUI (or runs a prompt directly).
+#
+# With no arguments it opens the interactive TUI. With -p/--prompt it runs in
+# headless (non-interactive) mode and prints the result:
+#   upcode -p "review the code"
+#   upcode --model gpt-4o -p "explain this project"
+#   echo "summarize the README" | upcode -p -
+#
+# Can be run from any folder. Put it on the PATH to type just `upcode`, e.g.:
+#   ln -s "$(pwd)/upcode" /usr/local/bin/upcode
+#
+# - UPCODE_HOME_DIR  = installation directory (conf/, specialists/, .agents/)
+# - UPCODE_WORKSPACE = the current folder (the project the agent will work in)
+# Both honor values already set in the environment.
+set -euo pipefail
+
+# Resolve this script's real directory (following symlinks).
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+  DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+HOME_DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
+
+export UPCODE_HOME_DIR="${UPCODE_HOME_DIR:-$HOME_DIR}"
+export UPCODE_WORKSPACE="${UPCODE_WORKSPACE:-$PWD}"
+export PYTHONPATH="$HOME_DIR${PYTHONPATH:+:$PYTHONPATH}"
+
+# Use the installation's venv if it exists; otherwise, the python3 on PATH.
+PY="python3"
+[ -x "$HOME_DIR/.venv/bin/python" ] && PY="$HOME_DIR/.venv/bin/python"
+
+exec "$PY" -m cowork.tui "$@"
