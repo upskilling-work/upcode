@@ -55,9 +55,12 @@ clone_or_update() {
 }
 
 install_deps() {
+    local venv="$INSTALL_DIR/.venv"
+    info "Creating virtual environment at $venv ..."
+    "$PYTHON_BIN" -m venv "$venv"
     info "Installing Python dependencies ..."
-    "$PYTHON_BIN" -m pip install --quiet --upgrade pip
-    "$PYTHON_BIN" -m pip install --quiet -r "$INSTALL_DIR/requirements.txt"
+    "$venv/bin/pip" install --quiet --upgrade pip
+    "$venv/bin/pip" install --quiet -r "$INSTALL_DIR/requirements.txt"
 }
 
 setup_env() {
@@ -75,8 +78,11 @@ setup_env() {
 print_usage() {
     printf "\n${GREEN}Installation complete!${NC}\n\n"
     printf "To start upcode:\n"
+    printf "  source %s/.venv/bin/activate\n" "$INSTALL_DIR"
     printf "  cd %s\n" "$INSTALL_DIR"
-    printf "  python3 -m cowork.tui\n\n"
+    printf "  python -m cowork.tui\n\n"
+    printf "Or without activating the venv:\n"
+    printf "  %s/.venv/bin/python -m cowork.tui\n\n" "$INSTALL_DIR"
     printf "Edit %s/.env to configure your API keys.\n\n" "$INSTALL_DIR"
 }
 
