@@ -19,7 +19,29 @@ Includes:
 
 ## Installation
 
+### One-line install (recommended)
+
 ```bash
+curl -fsSL https://raw.githubusercontent.com/upskilling-work/upcode/main/install.sh | bash
+```
+
+This will:
+1. Check for `git` and Python 3.9+
+2. Clone the repo into `~/.upcode`
+3. Install all dependencies
+4. Create a `.env` from `.env.example`
+
+To install into a custom directory:
+
+```bash
+UPCODE_INSTALL_DIR=~/my-upcode curl -fsSL https://raw.githubusercontent.com/upskilling-work/upcode/main/install.sh | bash
+```
+
+### Manual install
+
+```bash
+git clone https://github.com/upskilling-work/upcode.git
+cd upcode
 pip install -r requirements.txt
 cp .env.example .env   # edit with your endpoint, key and model
 ```
