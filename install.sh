@@ -63,6 +63,29 @@ install_deps() {
     "$venv/bin/pip" install --quiet -r "$INSTALL_DIR/requirements.txt"
 }
 
+install_launcher() {
+    local bin_dir="$HOME/.local/bin"
+    local launcher="$bin_dir/upcode"
+
+    mkdir -p "$bin_dir"
+
+    cat > "$launcher" <<EOF
+#!/usr/bin/env bash
+exec "$INSTALL_DIR/.venv/bin/python" -m cowork.tui "\$@"
+EOF
+    chmod +x "$launcher"
+    info "Launcher created at $launcher"
+
+    case ":$PATH:" in
+        *":$bin_dir:"*) ;;
+        *) warn "$bin_dir is not in your PATH. Add this to your shell profile:" ;;
+    esac
+    case ":$PATH:" in
+        *":$bin_dir:"*) ;;
+        *) printf '  export PATH="%s:$PATH"\n' "$bin_dir" ;;
+    esac
+}
+
 setup_env() {
     local env_file="$INSTALL_DIR/.env"
     if [ ! -f "$env_file" ]; then
@@ -77,12 +100,8 @@ setup_env() {
 
 print_usage() {
     printf "\n${GREEN}Installation complete!${NC}\n\n"
-    printf "To start upcode:\n"
-    printf "  source %s/.venv/bin/activate\n" "$INSTALL_DIR"
-    printf "  cd %s\n" "$INSTALL_DIR"
-    printf "  python -m cowork.tui\n\n"
-    printf "Or without activating the venv:\n"
-    printf "  %s/.venv/bin/python -m cowork.tui\n\n" "$INSTALL_DIR"
+    printf "Run upcode:\n"
+    printf "  upcode\n\n"
     printf "Edit %s/.env to configure your API keys.\n\n" "$INSTALL_DIR"
 }
 
@@ -92,6 +111,7 @@ main() {
     check_python
     clone_or_update
     install_deps
+    install_launcher
     setup_env
     print_usage
 }
