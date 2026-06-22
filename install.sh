@@ -71,6 +71,7 @@ install_launcher() {
 
     cat > "$launcher" <<EOF
 #!/usr/bin/env bash
+export PYTHONPATH="$INSTALL_DIR"
 exec "$INSTALL_DIR/.venv/bin/python" -m cowork.tui "\$@"
 EOF
     chmod +x "$launcher"
