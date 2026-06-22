@@ -20,18 +20,19 @@ check_git() {
     info "git found: $(git --version)"
 }
 
+PYTHON_BIN=""
+
 check_python() {
-    local py=""
     if command -v python3 &>/dev/null; then
-        py="python3"
+        PYTHON_BIN="python3"
     elif command -v python &>/dev/null && python --version 2>&1 | grep -q "^Python 3"; then
-        py="python"
+        PYTHON_BIN="python"
     else
         error "Python 3 is required but not found. Install it from https://python.org and re-run."
     fi
 
     local ver
-    ver=$("$py" -c "import sys; print('%d.%d' % sys.version_info[:2])")
+    ver=$("$PYTHON_BIN" -c "import sys; print('%d.%d' % sys.version_info[:2])")
     local major minor
     major=$(echo "$ver" | cut -d. -f1)
     minor=$(echo "$ver" | cut -d. -f2)
@@ -40,8 +41,7 @@ check_python() {
         error "Python 3.9+ is required. Found Python $ver."
     fi
 
-    info "Python found: $("$py" --version)"
-    echo "$py"
+    info "Python found: $("$PYTHON_BIN" --version)"
 }
 
 clone_or_update() {
@@ -55,10 +55,9 @@ clone_or_update() {
 }
 
 install_deps() {
-    local py="$1"
     info "Installing Python dependencies ..."
-    "$py" -m pip install --quiet --upgrade pip
-    "$py" -m pip install --quiet -r "$INSTALL_DIR/requirements.txt"
+    "$PYTHON_BIN" -m pip install --quiet --upgrade pip
+    "$PYTHON_BIN" -m pip install --quiet -r "$INSTALL_DIR/requirements.txt"
 }
 
 setup_env() {
@@ -84,10 +83,9 @@ print_usage() {
 main() {
     info "Installing upcode ..."
     check_git
-    local py
-    py=$(check_python)
+    check_python
     clone_or_update
-    install_deps "$py"
+    install_deps
     setup_env
     print_usage
 }
