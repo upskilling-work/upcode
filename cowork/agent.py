@@ -104,9 +104,9 @@ class AgentConfig:
     base_url: str | None = None
     api_key: str | None = None
     system_prompt: str = DEFAULT_SYSTEM_PROMPT
-    # Working directory (env UPCODE_WORKSPACE; default: the Upcode home).
+    # Working directory (env UPCODE_WORKSPACE; default: current directory).
     workspace: str = field(
-        default_factory=lambda: os.path.abspath(os.getenv("UPCODE_WORKSPACE") or home_dir())
+        default_factory=lambda: os.path.abspath(os.getenv("UPCODE_WORKSPACE") or os.getcwd())
     )
     # API used: "chat" (chat/completions), "responses" (codex/GPT-5) or
     # "anthropic" (native Anthropic Messages API). From models.json per profile.
